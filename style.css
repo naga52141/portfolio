@@ -283,6 +283,7 @@ nav{
 }
 .col{
     display: flex;
+    flex-wrap: wrap;
     width: 50%;
 }
 
@@ -338,6 +339,7 @@ h3{
 
 /* ----- ABOUT / SKILLS BOX ----- */
 .skills-box{
+    flex: 1 1 40%;
     margin: 10px;
 }
 .skills-header{
@@ -360,51 +362,52 @@ h3{
 .project-container{
     display: flex;
     width: 100%;
-    justify-content: space-between;
-    gap: 20px;
+    gap: 30px;
     flex-wrap: wrap;
 }
-.project-box{
-    position: relative;
+.project-card{
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    width: 30%;
-    height: 250px;
+    width: calc(50% - 15px);
+    padding: 30px;
     background: var(--color-white);
     border-radius: 20px;
     box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-    overflow: hidden;
 }
-.project-box>i{
-    font-size: 50px;
+.project-card-header{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+.project-card-header i{
+    font-size: 26px;
     color: #00B5E7;
-    margin-bottom: 25px;
 }
-.project-box label{
-    font-size: 15px;
+.project-card-header h3{
+    margin-bottom: 0;
+}
+.project-card p{
+    font-size: 14px;
+    line-height: 1.6;
     color: #777;
+    margin-bottom: 20px;
+    flex-grow: 1;
 }
-.project-box::after, .contact-info::after{
-    content: "";
-    position: absolute;
-    bottom: -100%;
-    background: var(--second-color);
-    width: 100%;
-    height: 100%;
-    transition: .4s;
-    z-index: 1;
+.project-card-links{
+    display: flex;
+    gap: 15px;
 }
-.project-box:hover.project-box::after,
-.contact-info:hover.contact-info::after{
-    bottom: 0;
+.project-card-links a{
+    text-decoration: none;
 }
-.project-box:hover.project-box i,
-.project-box:hover.project-box>h3,
-.project-box:hover.project-box>label{
-    color: var(--color-white);
-    z-index: 2;
+.project-card-links .btn{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+.project-card-links .btn>i{
+    margin-left: 8px;
 }
 
 /* ----- CONTACT BOX ----- */
@@ -437,7 +440,17 @@ h3{
     font-size: 18px;
 }
 .contact-info::after{
+    content: "";
+    position: absolute;
+    bottom: -100%;
     background: var(--color-white);
+    width: 100%;
+    height: 100%;
+    transition: .4s;
+    z-index: 1;
+}
+.contact-info:hover.contact-info::after{
+    bottom: 0;
 }
 .contact-info:hover.contact-info h2,
 .contact-info:hover.contact-info p,
@@ -606,14 +619,14 @@ footer{
         justify-content: center;
         width: 100%;
     }
+    .skills-box{
+        flex-basis: 100%;
+    }
     .about-info, .contact-info{
         width: 100%;
     }
-    .project-container{
-        justify-content: center;
-    }
-    .project-box{
-        width: 80%;
+    .project-card{
+        width: 100%;
     }
 
 }
@@ -624,23 +637,10 @@ footer{
     .featured-name{
         font-size: 40px;
     }
-    .project-box{
-        width: 100%;
-    }
     .form-inputs{
         flex-direction: column;
     }
     .input-field{
         width: 100%;
     }
-}
-
-body {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-body.dark-theme {
-  background-color: #121212;
-  color: #ffffff;
 }
